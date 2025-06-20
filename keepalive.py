@@ -15,12 +15,13 @@ def ping_replit():
     while True:
         try:
             print("🔁 Pinging Replit...")
-            headers = {'User-Agent': 'PingBot'}
+            headers = {'User-Agent': 'RenderHealthBot'}
             response = requests.get(REPLIT_URL, headers=headers, timeout=10)
-            print(f"✅ Replit responded with status: {response.status_code}")
-        except Exception as e:
-            print(f"❌ Ping failed: {repr(e)}")
+            print("✅ Replit responded with status:", response.status_code)
+        except requests.exceptions.RequestException as e:
+            print("❌ Ping failed:", repr(e))  # Forces full traceback
         time.sleep(300)  # 5 minutes
+
 
 
 # Start pinging loop as background daemon
