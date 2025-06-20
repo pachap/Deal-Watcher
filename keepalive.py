@@ -1,15 +1,14 @@
 from flask import Flask
 import threading
-import time
 import requests
-
-REPLIT_URL = "https://14c73959-dd24-4ebe-849c-3779f27186af-00-2l4122qrzz1w0.sisko.replit.dev"
+import time
 
 app = Flask(__name__)
+REPLIT_URL = "https://14c73959-dd24-4ebe-849c-3779f27186af-00-2l4122qrzz1w0.sisko.replit.dev"
 
 @app.route('/')
 def home():
-    return "✅ Render ping service is alive"
+    return "✅ Ping service is active!"
 
 def ping_replit():
     while True:
@@ -29,12 +28,11 @@ def ping_replit():
 
         except requests.exceptions.RequestException as e:
             print("❌ Ping failed:", repr(e))
-            print("⚠️ Reached end of try block")
 
-        time.sleep(300)
+        time.sleep(300)  # Ping every 5 minutes
 
-
-
-
-# Start pinging loop as background daemon
-threading.Thread(target=ping_replit, daemon=True).start()
+def keep_alive():
+    thread = threading.Thread(target=ping_replit)
+    thread.daemon = True
+    thread.start()
+    app.run(host='0.0.0.0', port=8080)
