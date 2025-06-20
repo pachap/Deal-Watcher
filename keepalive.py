@@ -29,6 +29,7 @@ def ping_replit():
 
         except requests.exceptions.RequestException as e:
             print("❌ Ping failed:", repr(e))
+            print("⚠️ Reached end of try block")
 
         time.sleep(300)
 
