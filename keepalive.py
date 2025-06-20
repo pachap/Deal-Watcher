@@ -14,7 +14,7 @@ def home():
 def ping_replit():
     while True:
         try:
-            print("🔁 Pinging Replit...")
+            print("🔁 Pinging Replit...OMER")
             headers = {'User-Agent': 'RenderHealthBot'}
             response = requests.get(REPLIT_URL, headers=headers, timeout=10)
             print("✅ Replit responded with status:", response.status_code)
