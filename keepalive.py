@@ -14,13 +14,24 @@ def home():
 def ping_replit():
     while True:
         try:
-            print("🔁 Pinging Replit...OMER")
-            headers = {'User-Agent': 'RenderHealthBot'}
+            print("🔁 Pinging Replit...")
+
+            headers = {
+                'User-Agent': 'RenderHealthBot/1.0',
+                'Accept': '*/*'
+            }
+
             response = requests.get(REPLIT_URL, headers=headers, timeout=10)
-            print("✅ Replit responded with status:", response.status_code)
+
+            print("✅ Replit responded")
+            print("    ➤ Status code:", response.status_code)
+            print("    ➤ Response text (first 100 chars):", response.text[:100])
+
         except requests.exceptions.RequestException as e:
-            print("❌ Ping failed:", repr(e))  # Forces full traceback
-        time.sleep(300)  # 5 minutes
+            print("❌ Ping failed:", repr(e))
+
+        time.sleep(300)
+
 
 
 
