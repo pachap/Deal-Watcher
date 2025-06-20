@@ -3,7 +3,7 @@ import threading
 import time
 import requests
 
-REPLIT_URL = "https://14c73959-dd24-4ebe-849c-3779f27186af-00-2l4122qrzz1w0.sisko.replit.dev/"
+REPLIT_URL = "https://14c73959-dd24-4ebe-849c-3779f27186af-00-2l4122qrzz1w0.sisko.replit.dev"
 
 app = Flask(__name__)
 
